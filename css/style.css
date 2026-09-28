@@ -116,14 +116,18 @@ a:focus-visible {
   color: var(--color-text);
 }
 
+/*
+  Flexbox: меню навигации в одну строку.
+  display: flex — выстроить пункты в ряд,
+  gap — расстояние между ними.
+*/
 .site-nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
   padding: 0;
   margin: var(--space-md) 0 0;
   list-style: none;
-}
-
-.site-nav__list li {
-  margin-bottom: var(--space-sm);
 }
 
 .site-nav__list a {
@@ -158,7 +162,29 @@ a:focus-visible {
   margin-top: 0;
 }
 
+/*
+  Grid-сетка для карточек товаров.
+  repeat(3, 1fr) = три равные колонки.
+*/
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+/* На узких экранах карточки перестраиваются в одну колонку */
+@media (max-width: 800px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*
+  Карточка товара (БЭМ-блок product-card).
+  position: relative — точка отсчёта для бейджа.
+*/
 .product-card {
+  position: relative;
   margin-bottom: var(--space-md);
   padding: var(--space-md);
   border: 1px solid var(--color-border);
@@ -170,8 +196,45 @@ a:focus-visible {
   border-color: var(--color-primary);
 }
 
-.product-card h3 {
+/* БЭМ-элементы карточки */
+.product-card__title {
   margin-top: 0;
+}
+
+.product-card__text {
+  margin: 0 0 var(--space-sm);
+}
+
+.product-card__price {
+  margin: 0 0 var(--space-md);
+  font-weight: bold;
+}
+
+/*
+  Бейдж «Новинка».
+  position: absolute — позиция считается от карточки,
+  у которой position: relative.
+*/
+.product-card__badge {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  padding: var(--space-xs) var(--space-sm);
+  background-color: var(--color-success);
+  color: var(--color-white);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+}
+
+/*
+  Кнопка «Наверх».
+  position: fixed — приклеена к окну браузера,
+  не двигается при прокрутке.
+*/
+.up-button {
+  position: fixed;
+  right: var(--space-lg);
+  bottom: var(--space-lg);
 }
 
 .aside-info {
