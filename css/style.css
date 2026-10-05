@@ -121,9 +121,12 @@ a:focus-visible {
   display: flex — выстроить пункты в ряд,
   gap — расстояние между ними.
 */
+/* ===== ПР6: навигация (Flexbox) ===== */
 .site-nav__list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   gap: var(--space-md);
   padding: 0;
   margin: var(--space-md) 0 0;
@@ -131,13 +134,16 @@ a:focus-visible {
 }
 
 .site-nav__list a {
+  display: inline-block;
+  padding: var(--space-sm) var(--space-md);
   color: var(--color-primary);
   text-decoration: none;
+  border-radius: var(--radius-sm);
 }
 
 .site-nav__list a:hover {
-  color: var(--color-primary-dark);
-  text-decoration: underline;
+  color: var(--color-white);
+  background-color: var(--color-primary);
 }
 
 .site-nav__list a:focus-visible {
@@ -166,30 +172,28 @@ a:focus-visible {
   Grid-сетка для карточек товаров.
   repeat(3, 1fr) = три равные колонки.
 */
-.product-grid {
+/* ===== ПР6: сетка карточек (Grid) ===== */
+.products-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-md);
+  gap: var(--space-lg);
 }
 
-/* На узких экранах карточки перестраиваются в одну колонку */
-@media (max-width: 800px) {
-  .product-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/*
-  Карточка товара (БЭМ-блок product-card).
-  position: relative — точка отсчёта для бейджа.
-*/
+/* ===== ПР6: карточка товара (Flexbox) ===== */
 .product-card {
-  position: relative;
-  margin-bottom: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-bottom: 0;
   padding: var(--space-md);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   background-color: var(--color-bg);
+}
+
+.product-card .button {
+  margin-top: auto;
+  align-self: flex-start;
 }
 
 .product-card:hover {
@@ -363,4 +367,55 @@ html {
 :target {
   outline: 2px dashed var(--color-primary);
   outline-offset: 4px;
+}
+/* ===== ПР6: страница каталога (Grid) ===== */
+.catalog-layout {
+  max-width: var(--container-width);
+  margin: 0 auto var(--space-xl);
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  grid-template-areas: "filters products";
+  gap: var(--space-lg);
+}
+
+.catalog-filters {
+  grid-area: filters;
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+}
+
+.catalog-products {
+  grid-area: products;
+}
+
+/* ===== ПР6: форма фильтров ===== */
+.filters-form {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.filters-form fieldset {
+  margin: 0;
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.filters-form legend {
+  font-weight: 700;
+}
+
+.filters-form label {
+  display: block;
+  margin-bottom: var(--space-sm);
+}
+
+.filters-form input[type="number"] {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font: inherit;
 }
