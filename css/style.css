@@ -458,3 +458,155 @@ body {
 .site-footer__text {
   margin: 0 0 var(--space-xs);
 }
+
+/* ===== ПР8: доработка карточек товара (позиционирование, варианты) ===== */
+.product-card {
+  position: relative;
+}
+
+.product-card--new {
+  border-color: var(--color-success);
+}
+
+.product-card__badge {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  z-index: 1;
+  padding: 4px 8px;
+  font-size: 13px;
+  color: var(--color-white);
+  background-color: var(--color-danger);
+  border-radius: var(--radius-sm);
+}
+
+.product-card__badge--hit {
+  background-color: var(--color-primary);
+}
+
+.product-card__badge--new {
+  background-color: var(--color-success);
+}
+
+.product-card__title {
+  padding-right: 80px;
+}
+
+.product-card__old-price {
+  margin-left: var(--space-sm);
+  font-weight: 400;
+  color: var(--color-muted);
+}
+
+/* ===== Блок: product (страница товара) ===== */
+.product {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  align-items: start;
+}
+
+.product__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.product__info {
+  min-width: 0;
+}
+
+.product__title {
+  margin-top: 0;
+}
+
+.product__text {
+  color: var(--color-muted);
+}
+
+.product__price {
+  margin: var(--space-md) 0;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+/* ===== Блок: product-table ===== */
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.product-table__caption {
+  margin-bottom: var(--space-sm);
+  font-weight: 700;
+  text-align: left;
+}
+
+.product-table__head,
+.product-table__cell {
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-border);
+  text-align: left;
+}
+
+.product-table__head {
+  background-color: var(--color-surface);
+}
+
+.product-table--compare .product-table__cell--accent {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* ===== Блоки: reviews / review-card ===== */
+.reviews__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+.review-card {
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+}
+
+.review-card__author {
+  margin: 0;
+  font-weight: 700;
+}
+
+.review-card__rating {
+  margin: var(--space-xs) 0 var(--space-sm);
+  color: var(--color-primary);
+}
+
+.review-card__text {
+  margin: 0;
+}
+
+/* ===== Блок: faq ===== */
+.faq__item {
+  margin-bottom: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.faq__question {
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.faq__question:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.faq__answer {
+  margin: var(--space-sm) 0 0;
+  color: var(--color-muted);
+}
