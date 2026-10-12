@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="360" viewBox="0 0 480 360" role="img" aria-label="Заглушка изображения товара">
+  <rect width="480" height="360" fill="#f3f6fb"/>
+  <rect x="150" y="100" width="180" height="140" rx="12" fill="#0057b8" opacity="0.15"/>
+  <circle cx="200" cy="150" r="18" fill="#0057b8" opacity="0.5"/>
+  <path d="M150 240 L220 175 L270 220 L300 195 L330 240 Z" fill="#0057b8" opacity="0.5"/>
+  <text x="240" y="285" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#5f6b7a">Изображение товара</text>
+</svg>

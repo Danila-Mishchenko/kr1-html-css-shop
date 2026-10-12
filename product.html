@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Карточка товара: описание, характеристики, сравнение комплектаций и отзывы.">
+  <title>Товар 1 — Учебный интернет-магазин</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="index.html">ShopProject</a>
+
+      <nav class="site-nav" aria-label="Основная навигация">
+        <ul class="site-nav__list">
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
+          <li class="site-nav__item"><a class="site-nav__link site-nav__link--active" href="product.html" aria-current="page">Товар</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="order.html">Заявка</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#advantages">Преимущества</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#popular">Популярные товары</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html#contacts">Обратная связь</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <nav class="breadcrumbs" aria-label="Хлебные крошки">
+      <a class="breadcrumbs__link" href="index.html">Главная</a>
+      <a class="breadcrumbs__link" href="catalog.html">Каталог</a>
+      <span class="breadcrumbs__current">Товар 1</span>
+    </nav>
+
+    <section class="section product">
+      <img class="product__image" src="images/product-placeholder.svg" alt="Учебный товар 1" width="480" height="360">
+
+      <article class="product__info">
+        <h1 class="product__title">Товар 1</h1>
+        <p class="product__text">
+          Подробное описание учебного товара. Здесь можно рассказать о назначении,
+          материалах и особенностях товара.
+        </p>
+        <p class="product__price">1000 руб.</p>
+        <a class="button button--primary" href="order.html">Оставить заявку</a>
+        <a class="button button--secondary" href="catalog.html">Назад в каталог</a>
+      </article>
+    </section>
+
+    <section class="section">
+      <h2 class="section__title">Характеристики</h2>
+
+      <table class="product-table">
+        <caption class="product-table__caption">Характеристики товара</caption>
+        <thead>
+          <tr>
+            <th class="product-table__head" scope="col">Параметр</th>
+            <th class="product-table__head" scope="col">Значение</th>
+            <th class="product-table__head" scope="col">Комментарий</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="product-table__cell" scope="row">Категория</th>
+            <td class="product-table__cell">Учебный товар</td>
+            <td class="product-table__cell">Относится к популярным</td>
+          </tr>
+          <tr>
+            <th class="product-table__cell" scope="row">Цена</th>
+            <td class="product-table__cell">1000 руб.</td>
+            <td class="product-table__cell">Указана с учётом НДС</td>
+          </tr>
+          <tr>
+            <th class="product-table__cell" scope="row">Наличие</th>
+            <td class="product-table__cell">В наличии</td>
+            <td class="product-table__cell">Более 10 штук</td>
+          </tr>
+          <tr>
+            <th class="product-table__cell" scope="row">Вес</th>
+            <td class="product-table__cell">500 г</td>
+            <td class="product-table__cell">Без упаковки</td>
+          </tr>
+          <tr>
+            <th class="product-table__cell" scope="row">Размер</th>
+            <td class="product-table__cell">20 × 15 × 10 см</td>
+            <td class="product-table__cell">Ширина × высота × глубина</td>
+          </tr>
+          <tr>
+            <th class="product-table__cell" scope="row">Гарантия</th>
+            <td class="product-table__cell">12 месяцев</td>
+            <td class="product-table__cell">Условия уточняйте в контактах</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2 class="section__title">Сравнение комплектаций</h2>
+
+      <table class="product-table product-table--compare">
+        <caption class="product-table__caption">Комплектации товара</caption>
+        <thead>
+          <tr>
+            <th class="product-table__head" scope="col">Параметр</th>
+            <th class="product-table__head" scope="col">Базовая</th>
+            <th class="product-table__head" scope="col">Стандарт</th>
+            <th class="product-table__head" scope="col">Про</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th class="product-table__cell" scope="row">Цена</th>
+            <td class="product-table__cell">1000 руб.</td>
+            <td class="product-table__cell product-table__cell--accent">1500 руб.</td>
+            <td class="product-table__cell">2000 руб.</td>
+          </tr>
+          <tr>
+            <th class="product-table__cell" scope="row">Гарантия</th>
+            <td class="product-table__cell">6 месяцев</td>
+            <td class="product-table__cell product-table__cell--accent">12 месяцев</td>
+            <td class="product-table__cell">24 месяца</td>
+          </tr>
+          <tr>
+            <th class="product-table__cell" scope="row">Доставка</th>
+            <td class="product-table__cell">Платная</td>
+            <td class="product-table__cell product-table__cell--accent">Бесплатная</td>
+            <td class="product-table__cell">Бесплатная, срочная</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section reviews">
+      <h2 class="section__title">Отзывы покупателей</h2>
+
+      <div class="reviews__list">
+        <article class="review-card">
+          <p class="review-card__author">Анна</p>
+          <p class="review-card__rating" aria-label="Оценка 5 из 5">★★★★★</p>
+          <p class="review-card__text">Отличный товар, всё соответствует описанию.</p>
+        </article>
+
+        <article class="review-card">
+          <p class="review-card__author">Игорь</p>
+          <p class="review-card__rating" aria-label="Оценка 4 из 5">★★★★☆</p>
+          <p class="review-card__text">Хорошее качество за свою цену, доставили быстро.</p>
+        </article>
+
+        <article class="review-card">
+          <p class="review-card__author">Мария</p>
+          <p class="review-card__rating" aria-label="Оценка 5 из 5">★★★★★</p>
+          <p class="review-card__text">Буду заказывать ещё, рекомендую.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <p class="site-footer__text">&copy; 2026 Учебный проект. Все права защищены.</p>
+      <p class="site-footer__text">Дисциплина: Фронтенд и бэкенд разработка</p>
+    </div>
+  </footer>
+</body>
+</html>
