@@ -1,64 +1,98 @@
-// Получаем модальное окно по id.
+// ===== Модальное окно заявки (есть только на index.html) =====
 const orderDialog = document.getElementById('order-dialog');
-// Получаем все кнопки заказа в карточках товаров.
-const orderButtons = document.querySelectorAll('.product-card__button');
-// Получаем кнопку закрытия модального окна.
-const closeDialogButton = document.getElementById('close-order-dialog');
-// Получаем скрытое поле, в которое будет записан выбранный товар.
-const selectedProductInput = document.getElementById('selected-product');
 
-// Перебираем все кнопки «Заказать».
-orderButtons.forEach((button) => {
-  button.addEventListener('click', () => {
-    // Получаем название товара из data-атрибута.
-    const productName = button.dataset.product;
-    // Записываем название товара в скрытое поле формы.
-    selectedProductInput.value = productName;
-    // Открываем модальное окно.
-    orderDialog.showModal();
-  });
-});
+if (orderDialog) {
+  const orderButtons = document.querySelectorAll('.product-card__button');
+  const closeButton = document.getElementById('close-order-dialog');
+  const productInput = document.getElementById('order-product');
+  const productLabel = document.getElementById('order-dialog-product');
 
-// Закрываем модальное окно по кнопке «Закрыть».
-closeDialogButton.addEventListener('click', () => {
-  orderDialog.close();
-});
-
-// Получаем форму заявки.
-const orderForm = document.getElementById('order-form');
-// Получаем сообщение об успешной отправке.
-const successMessage = document.getElementById('success-message');
-
-// Обрабатываем отправку формы.
-orderForm.addEventListener('submit', (event) => {
-  // Отменяем стандартную отправку формы,
-  // потому что backend пока не подключён.
-  event.preventDefault();
-
-  // Сбрасываем предыдущие признаки ошибок.
-  const formElements = Array.from(orderForm.elements);
-  formElements.forEach((element) => {
-    if (element.willValidate) {
-      element.removeAttribute('aria-invalid');
-    }
-  });
-
-  // Проверяем встроенные HTML-ограничения формы.
-  if (!orderForm.checkValidity()) {
-    formElements.forEach((element) => {
-      if (element.willValidate && !element.checkValidity()) {
-        element.setAttribute('aria-invalid', 'true');
-      }
+  orderButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const product = button.dataset.product || '—';
+      productInput.value = product;
+      productLabel.textContent = product;
+      orderDialog.showModal();
     });
-    // Показываем стандартные сообщения браузера.
-    orderForm.reportValidity();
-    return;
+  });
+
+  closeButton.addEventListener('click', () => {
+    orderDialog.close();
+  });
+}
+
+// ===== Проверка форм заявки =====
+function showError(field, message) {
+  const error = field.closest('.order-form__field').querySelector('.order-form__error');
+  field.classList.add('order-form__input--error');
+  field.setAttribute('aria-invalid', 'true');
+  error.textContent = message;
+  error.hidden = false;
+}
+
+function clearError(field) {
+  const error = field.closest('.order-form__field').querySelector('.order-form__error');
+  field.classList.remove('order-form__input--error');
+  field.removeAttribute('aria-invalid');
+  if (error) {
+    error.textContent = '';
+    error.hidden = true;
+  }
+}
+
+function validateField(field) {
+  clearError(field);
+
+  if (field.type === 'checkbox') {
+    if (field.required && !field.checked) {
+      showError(field, 'Необходимо согласие');
+      return false;
+    }
+    return true;
   }
 
-  // Показываем сообщение об успешной отправке.
-  successMessage.hidden = false;
-  // Очищаем форму.
-  orderForm.reset();
-  // Закрываем модальное окно.
-  orderDialog.close();
+  const value = field.value.trim();
+
+  if (field.required && value === '') {
+    showError(field, 'Заполните это поле');
+    return false;
+  }
+
+  if (field.type === 'email' && value !== '' && !field.checkValidity()) {
+    showError(field, 'Введите корректный e-mail');
+    return false;
+  }
+
+  return true;
+}
+
+document.querySelectorAll('.order-form').forEach((form) => {
+  const successMessage = form.querySelector('.success-message');
+  const fields = form.querySelectorAll('input[required], select[required], textarea[required]');
+
+  fields.forEach((field) => {
+    field.addEventListener('input', () => clearError(field));
+  });
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    successMessage.hidden = true;
+
+    let isValid = true;
+    fields.forEach((field) => {
+      if (!validateField(field)) {
+        isValid = false;
+      }
+    });
+
+    if (isValid) {
+      successMessage.hidden = false;
+      const savedProduct = form.querySelector('input[type="hidden"]');
+      const product = savedProduct ? savedProduct.value : '';
+      form.reset();
+      if (savedProduct) {
+        savedProduct.value = product;
+      }
+    }
+  });
 });
