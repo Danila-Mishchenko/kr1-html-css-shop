@@ -610,3 +610,175 @@ body {
   margin: var(--space-sm) 0 0;
   color: var(--color-muted);
 }
+
+/* ===== КР1: доработки ===== */
+
+/* --- 1. Sticky-фильтр каталога --- */
+.catalog-filters {
+  position: sticky;
+  top: var(--space-lg);
+  align-self: start;
+}
+
+/* --- 2. Дополнительные состояния кнопок --- */
+.button {
+  transition: background-color 0.2s, color 0.2s, transform 0.1s;
+}
+
+.button:active {
+  transform: translateY(1px);
+}
+
+.button--primary:active {
+  background-color: var(--color-primary-dark);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.button--secondary:active {
+  color: var(--color-white);
+  background-color: var(--color-primary-dark);
+}
+
+.button--primary:disabled:hover {
+  background-color: var(--color-primary);
+}
+
+.button:disabled:active {
+  transform: none;
+  box-shadow: none;
+}
+
+/* --- 2. Дополнительные состояния карточек --- */
+.product-card {
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.product-card:hover {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.product-card:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0, 87, 184, 0.25);
+}
+
+.product-card--sold-out {
+  background-color: var(--color-surface);
+}
+
+.product-card--sold-out:hover {
+  border-color: var(--color-border);
+  box-shadow: none;
+  transform: none;
+}
+
+.product-card--sold-out .product-card__title {
+  color: var(--color-muted);
+}
+
+.product-card__badge--muted {
+  background-color: var(--color-muted);
+}
+
+/* --- 3. Улучшенное модальное окно --- */
+.order-dialog[open] {
+  animation: dialog-in 0.2s ease-out;
+}
+
+.order-dialog[open]::backdrop {
+  animation: backdrop-in 0.2s ease-out;
+}
+
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes backdrop-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+body:has(.order-dialog[open]) {
+  overflow: hidden;
+}
+
+.order-dialog__title {
+  padding-right: 40px;
+}
+
+.order-dialog__close {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 24px;
+  line-height: 1;
+  color: var(--color-muted);
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.order-dialog__close:hover {
+  color: var(--color-text);
+  background-color: var(--color-surface);
+}
+
+.order-dialog__close:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* --- 4. Улучшенная доступность формы --- */
+.order-form__required {
+  color: var(--color-danger);
+}
+
+.order-form__hint {
+  margin: var(--space-xs) 0 var(--space-sm);
+  font-size: 14px;
+  color: var(--color-muted);
+}
+
+.order-form__input--error {
+  border-width: 2px;
+}
+
+.order-form__error::before {
+  content: "\26A0  ";
+  content: "\26A0  " / "";
+}
+
+.order-form__checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .product-card {
+    transition: none;
+  }
+
+  .order-dialog[open],
+  .order-dialog[open]::backdrop {
+    animation: none;
+  }
+}

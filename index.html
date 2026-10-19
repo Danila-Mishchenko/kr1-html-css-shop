@@ -94,23 +94,33 @@
     </section>
   </main>
 
-  <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
+    <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
+    <button class="order-dialog__close" type="button" id="close-order-dialog-icon" aria-label="Закрыть окно">&times;</button>
+
     <h2 class="order-dialog__title" id="order-dialog-title">Оформление заявки</h2>
     <p class="order-dialog__product">Выбранный товар: <strong id="order-dialog-product">—</strong></p>
 
     <form class="order-form" id="order-form" action="#" method="post" novalidate>
       <input type="hidden" name="product" id="order-product">
 
+      <p class="order-form__hint">Поля, отмеченные звёздочкой, обязательны.</p>
+
       <div class="order-form__field">
-        <label class="order-form__label" for="order-name">Имя</label>
-        <input class="order-form__input" id="order-name" name="name" type="text" required>
-        <p class="order-form__error" hidden></p>
+        <label class="order-form__label" for="order-name">
+          Имя <span class="order-form__required" aria-hidden="true">*</span>
+        </label>
+        <input class="order-form__input" id="order-name" name="name" type="text"
+               autocomplete="name" aria-describedby="order-name-error" required autofocus>
+        <p class="order-form__error" id="order-name-error" role="alert" hidden></p>
       </div>
 
       <div class="order-form__field">
-        <label class="order-form__label" for="order-email">E-mail</label>
-        <input class="order-form__input" id="order-email" name="email" type="email" required>
-        <p class="order-form__error" hidden></p>
+        <label class="order-form__label" for="order-email">
+          E-mail <span class="order-form__required" aria-hidden="true">*</span>
+        </label>
+        <input class="order-form__input" id="order-email" name="email" type="email"
+               autocomplete="email" inputmode="email" aria-describedby="order-email-error" required>
+        <p class="order-form__error" id="order-email-error" role="alert" hidden></p>
       </div>
 
       <div class="order-form__actions">

@@ -77,8 +77,7 @@
 
       <section class="catalog-products">
         <h2 class="catalog-products__title">Список товаров</h2>
-
-                <div class="products-grid">
+        <div class="products-grid">
           <article class="product-card product-card--featured">
             <span class="product-card__badge product-card__badge--hit">Хит</span>
             <h3 class="product-card__title">Товар 1</h3>
@@ -106,11 +105,12 @@
             <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
           </article>
 
-          <article class="product-card">
+          <article class="product-card product-card--sold-out">
+            <span class="product-card__badge product-card__badge--muted">Нет в наличии</span>
             <h3 class="product-card__title">Товар 4</h3>
             <p class="product-card__description">Краткое описание учебного товара.</p>
             <p class="product-card__price">Цена: 2500 руб.</p>
-            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+            <button class="button button--primary product-card__button" type="button" disabled>Нет в наличии</button>
           </article>
 
           <article class="product-card product-card--discount">
@@ -131,7 +131,56 @@
             <p class="product-card__price">Цена: 3000 руб.</p>
             <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
           </article>
+
+          <article class="product-card">
+            <h3 class="product-card__title">Товар 7</h3>
+            <p class="product-card__description">Краткое описание учебного товара.</p>
+            <p class="product-card__price">Цена: 1100 руб.</p>
+            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+          </article>
+
+          <article class="product-card">
+            <h3 class="product-card__title">Товар 8</h3>
+            <p class="product-card__description">Краткое описание учебного товара.</p>
+            <p class="product-card__price">Цена: 2200 руб.</p>
+            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+          </article>
+
+          <article class="product-card product-card--featured">
+            <span class="product-card__badge product-card__badge--hit">Хит</span>
+            <h3 class="product-card__title">Товар 9</h3>
+            <p class="product-card__description">Краткое описание учебного товара.</p>
+            <p class="product-card__price">Цена: 2700 руб.</p>
+            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+          </article>
+
+          <article class="product-card product-card--discount">
+            <span class="product-card__badge">Скидка</span>
+            <h3 class="product-card__title">Товар 10</h3>
+            <p class="product-card__description">Краткое описание учебного товара.</p>
+            <p class="product-card__price">
+              Цена: 900 руб.
+              <s class="product-card__old-price">1200 руб.</s>
+            </p>
+            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+          </article>
+
+          <article class="product-card">
+            <h3 class="product-card__title">Товар 11</h3>
+            <p class="product-card__description">Краткое описание учебного товара.</p>
+            <p class="product-card__price">Цена: 3500 руб.</p>
+            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+          </article>
+
+          <article class="product-card product-card--new">
+            <span class="product-card__badge product-card__badge--new">Новинка</span>
+            <h3 class="product-card__title">Товар 12</h3>
+            <p class="product-card__description">Краткое описание учебного товара.</p>
+            <p class="product-card__price">Цена: 4000 руб.</p>
+            <a class="button button--primary product-card__button" href="product.html">Подробнее</a>
+          </article>
         </div>
+          
       </section>
     </section>
   </main>
